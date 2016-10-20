@@ -15,6 +15,9 @@
 		E53140D51DB86C74009CC68F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53140D31DB86C74009CC68F /* LaunchScreen.storyboard */; };
 		E53140E01DB86C74009CC68F /* fileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E53140DF1DB86C74009CC68F /* fileTests.m */; };
 		E53140EB1DB86C75009CC68F /* fileUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E53140EA1DB86C75009CC68F /* fileUITests.m */; };
+		E53140FA1DB86E08009CC68F /* lxFileDownLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E53140F91DB86E08009CC68F /* lxFileDownLoader.m */; settings = {ASSET_TAGS = (); }; };
+		E53140FD1DB86ED0009CC68F /* lxMultiDownLoaders.m in Sources */ = {isa = PBXBuildFile; fileRef = E53140FC1DB86ED0009CC68F /* lxMultiDownLoaders.m */; settings = {ASSET_TAGS = (); }; };
+		E53141001DB8712D009CC68F /* lxSingleDownLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E53140FF1DB8712D009CC68F /* lxSingleDownLoader.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,12 @@
 		E53140E61DB86C74009CC68F /* fileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53140EA1DB86C75009CC68F /* fileUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fileUITests.m; sourceTree = "<group>"; };
 		E53140EC1DB86C75009CC68F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E53140F81DB86E08009CC68F /* lxFileDownLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lxFileDownLoader.h; sourceTree = "<group>"; };
+		E53140F91DB86E08009CC68F /* lxFileDownLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lxFileDownLoader.m; sourceTree = "<group>"; };
+		E53140FB1DB86ED0009CC68F /* lxMultiDownLoaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lxMultiDownLoaders.h; sourceTree = "<group>"; };
+		E53140FC1DB86ED0009CC68F /* lxMultiDownLoaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lxMultiDownLoaders.m; sourceTree = "<group>"; };
+		E53140FE1DB8712D009CC68F /* lxSingleDownLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lxSingleDownLoader.h; sourceTree = "<group>"; };
+		E53140FF1DB8712D009CC68F /* lxSingleDownLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lxSingleDownLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +115,7 @@
 				E53140CB1DB86C74009CC68F /* ViewController.h */,
 				E53140CC1DB86C74009CC68F /* ViewController.m */,
 				E53140CE1DB86C74009CC68F /* Main.storyboard */,
+				E53141011DB897F8009CC68F /* 文件下载器 */,
 				E53140D11DB86C74009CC68F /* Assets.xcassets */,
 				E53140D31DB86C74009CC68F /* LaunchScreen.storyboard */,
 				E53140D61DB86C74009CC68F /* Info.plist */,
@@ -138,6 +148,19 @@
 				E53140EC1DB86C75009CC68F /* Info.plist */,
 			);
 			path = fileUITests;
+			sourceTree = "<group>";
+		};
+		E53141011DB897F8009CC68F /* 文件下载器 */ = {
+			isa = PBXGroup;
+			children = (
+				E53140F81DB86E08009CC68F /* lxFileDownLoader.h */,
+				E53140F91DB86E08009CC68F /* lxFileDownLoader.m */,
+				E53140FB1DB86ED0009CC68F /* lxMultiDownLoaders.h */,
+				E53140FC1DB86ED0009CC68F /* lxMultiDownLoaders.m */,
+				E53140FE1DB8712D009CC68F /* lxSingleDownLoader.h */,
+				E53140FF1DB8712D009CC68F /* lxSingleDownLoader.m */,
+			);
+			name = "文件下载器";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,8 +296,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E53140FA1DB86E08009CC68F /* lxFileDownLoader.m in Sources */,
 				E53140CD1DB86C74009CC68F /* ViewController.m in Sources */,
+				E53140FD1DB86ED0009CC68F /* lxMultiDownLoaders.m in Sources */,
 				E53140CA1DB86C74009CC68F /* AppDelegate.m in Sources */,
+				E53141001DB8712D009CC68F /* lxSingleDownLoader.m in Sources */,
 				E53140C71DB86C74009CC68F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,6 +525,7 @@
 				E53140F11DB86C75009CC68F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E53140F21DB86C75009CC68F /* Build configuration list for PBXNativeTarget "fileTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +534,7 @@
 				E53140F41DB86C75009CC68F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E53140F51DB86C75009CC68F /* Build configuration list for PBXNativeTarget "fileUITests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +543,7 @@
 				E53140F71DB86C75009CC68F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
