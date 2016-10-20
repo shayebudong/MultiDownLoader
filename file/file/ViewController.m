@@ -20,11 +20,11 @@
         _multiDowenLoaders = [[lxMultiDownLoaders alloc]init];
         
         //设置下载的路径
-        _multiDowenLoaders.url = @"http://www.baidu.com";
+        _multiDowenLoaders.url = @"http://youtu.204d.cn/resource/1.pdf";
         
         //设置下载的文件保存路径
         NSString *caches = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-        NSString *filepath = [caches stringByAppendingPathComponent:@"jre.zip"];
+        NSString *filepath = [caches stringByAppendingPathComponent:@"2.pdf"];
         NSLog(@"%@",filepath);
         _multiDowenLoaders.destPath = filepath;
     }

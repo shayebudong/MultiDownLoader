@@ -31,7 +31,7 @@
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
-    NSString *value = [NSString stringWithFormat:@"bytes = %lld-%lld",self.begin+self.currentLength,self.end];
+    NSString *value = [NSString stringWithFormat:@"bytes=%lld-%lld",self.begin+self.currentLength,self.end];
     [request setValue:value forHTTPHeaderField:@"Range"];
     self.conn = [NSURLConnection connectionWithRequest:request delegate:self];
     _downLoading = YES;
@@ -58,7 +58,7 @@
     self.currentLength += data.length;
     double progress = (double)self.currentLength/(self.end - self.begin);
     if (self.progressHandler) {
-        self.progressHandler(progress);
+        self.progressHandler( progress);
     }
 }
 

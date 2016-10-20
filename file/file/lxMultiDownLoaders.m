@@ -12,11 +12,10 @@
 #define lxMaxDownLoaders 4
 
 @interface lxMultiDownLoaders()
-{
-    
-}
+
 @property (nonatomic,strong) NSMutableArray *singleDownLoaders;
 @property (nonatomic,assign) long long totalLength;
+
 @end
 @implementation lxMultiDownLoaders
 
@@ -26,28 +25,28 @@
     request.HTTPMethod = @"HEAD";
    
     
-    NSURLSession *session = [[NSURLSession alloc]init];
-    [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        self.totalLength = response.expectedContentLength;
-    }];
+    NSURLResponse *response = nil;
+#warning 这里要用异步请求
+    [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+    self.totalLength = response.expectedContentLength;
     
 }
 
 -(NSMutableArray *)singleDownLoaders
 {
-    if (_singleDownLoaders) {
+    if (_singleDownLoaders == nil) {
         _singleDownLoaders = [NSMutableArray array];
         //获取要下载文件的总长度
         [self getFilesize];
-        //NSLog(@"%lld", self.totalLength);
+        NSLog(@"%lld", self.totalLength);
         //为每一个下载器均分下载长度（任务量）
         long long size = 0;
-        if (self.totalLength %size == 0) {
+        if (self.totalLength %lxMaxDownLoaders == 0) {
             size = self.totalLength/lxMaxDownLoaders;
         }else{
             size = self.totalLength/lxMaxDownLoaders +1;
         }
-        for (int i =0; i<lxMaxDownLoaders; i++) {
+        for (int i = 0; i < lxMaxDownLoaders; i++) {
             lxSingleDownLoader *single = [[lxSingleDownLoader alloc]init];
             //设置每个下载器的下载路径
             single.url = self.url;
@@ -60,11 +59,11 @@
             
             single.progressHandler = ^(double progress){
                 
-                NSLog(@"%f",progress);
+                NSLog(@"%d--- %f",i,progress);
             };
 
             //将每一个下载器添加到数组里边
-            [self.singleDownLoaders addObject:single];
+            [_singleDownLoaders addObject:single];
         }
         //预先创建一个文件与要下载的文件大小相同
         [[NSFileManager defaultManager]createFileAtPath:self.destPath contents:nil attributes:nil];
@@ -83,7 +82,7 @@
 //让下载器停止下载
 -(void)pause
 {
-    [self.singleDownLoaders makeObjectsPerformSelector:@selector(start)];
+    [self.singleDownLoaders makeObjectsPerformSelector:@selector(pause)];
     _downLoading = NO;
 }
 @end
